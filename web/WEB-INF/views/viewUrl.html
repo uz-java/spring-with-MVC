@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:include="fragment.html :: header('Home Page')"></head>
+<body>
+<header th:include="fragment.html :: nav-bar"></header>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Description</th>
+        <th scope="col">Valid Till</th>
+        <th scope="col">Created At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="url,count : ${msg}">
+        <tr>
+            <td th:text="${url.id}"></td>
+            <td>
+                <a th:href="@{'/go/'+${url.shortenedUrl}}" th:text="${url.description}"></a>
+            </td>
+            <td th:text="${url.validTill}"></td>
+            <td th:text="${url.createdAt}"></td>
+
+
+            <td>
+                <button class="btn btn-success" th:data-form="${url.originalUrl}" th:onclick="copyLink(this.getAttribute('data-form'))">Copy
+                    Link
+                </button>
+            </td>
+
+            <script th:inline="javascript">
+                function copyLink(text) {
+                    navigator.clipboard.writeText(text);
+                }
+            </script>
+        </tr>
+    </th:block>
+    </tbody>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <th:block th:each="count : ${subs}">
+                <div th:if="${count<2}">
+                    <li class="page-item"><a class="page-link" th:href="@{'/viewUrl/'+ ${count}}">Previous</a></li>
+                </div>
+                <td>
+                    <li class="page-item"><a class="page-link" th:href="@{'/viewUrl/'+${count}}" th:text="${count}"></a>
+                    </li>
+                </td>
+                <div th:if="${count==subs.size()}">
+                    <li class="page-item"><a class="page-link" th:href="@{'/viewUrl/'+ ${count}}">Next</a></li>
+                </div>
+            </th:block>
+        </ul>
+    </nav>
+</table>
+</body>
+</html>

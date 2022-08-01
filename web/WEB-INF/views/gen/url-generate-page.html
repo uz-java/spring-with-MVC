@@ -5,7 +5,8 @@
 <header th:include="fragment.html :: nav-bar"></header>
 <div class="row">
     <div class="col-6 offset-3">
-        <form method="post" action="/gen/?Accept-Language=ru" th:object="${dto}">
+       <!-- <form method="post" action="/gen/?Accept-Language=ru" th:object="${dto}">-->
+        <form method="post" th:object="${dto}">
             <div class="form-group">
                 <label for="url">url</label>
                 <input type="text" name="originalURL" class="form-control" th:field="*{originalUrl}" id="url" placeholder="Paste url here"/>

@@ -1,4 +1,4 @@
-package org.example.url.database;
+package org.example.database;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
  * @since 28/07/22 19:48 (Thursday)
  * Spring_mvc/IntelliJ IDEA
  */
-@Component
+//@Component
 public class Init implements ApplicationContextAware {
 
-    @Override
+    /*@Override
     public void setApplicationContext(ApplicationContext context) throws BeansException {
         JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
         String dropUrlTableIfExists = "drop table if exists url;";
@@ -27,6 +27,22 @@ public class Init implements ApplicationContextAware {
                 description varchar,
                 validTill timestamp not null default current_timestamp + interval '10 minutes',
                 createdAt timestamp not null default current_timestamp)
+                """;
+        jdbcTemplate.execute(createTable);
+    }*/
+
+    @Override
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
+        String dropUrlTableIfExists = "drop table if exists users;";
+        jdbcTemplate.execute(dropUrlTableIfExists);
+        String createTable = """
+                create table users(
+                id bigserial primary key ,
+                firstname varchar ,
+                lastname varchar ,
+                username varchar not null ,
+                password varchar not null)
                 """;
         jdbcTemplate.execute(createTable);
     }

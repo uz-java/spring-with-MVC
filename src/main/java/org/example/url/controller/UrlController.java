@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -29,10 +34,16 @@ public class UrlController {
     private final UrlService service;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ModelAndView homePage() {
-        ModelAndView modelAndView = new ModelAndView("index");
+    public ModelAndView homePage(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String user = (String) session.getAttribute("username");
+        System.out.println("homePage--- "+user);
+        if (Objects.isNull(user)) {
+            return new ModelAndView("loginPage");
+        }
+        ModelAndView modelAndView = new ModelAndView("viewUrl");
         List<UrlDomain> urlDomains = service.findAll();
-        modelAndView.addObject("urls", urlDomains);
+        modelAndView.addObject("msg", urlDomains);
         return modelAndView;
     }
 
@@ -54,6 +65,34 @@ public class UrlController {
     @RequestMapping(value = "/go/{shortenedUrl}", method = RequestMethod.GET)
     public void urlGeneratePage(@PathVariable String shortenedUrl, HttpServletResponse response) throws IOException {
         UrlDomain urlDomain = service.findByShortenedUrl(shortenedUrl);
-        response.sendRedirect(urlDomain.getOriginalUrl());
+
+        try {
+            TimeUnit.SECONDS.sleep(1);
+            response.sendRedirect(urlDomain.getOriginalUrl());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @RequestMapping(value = "/viewUrl/{pageId}")
+    public String edit(@PathVariable int pageId,Model model){
+        int limit=5;
+        int offset=(limit*pageId)-limit;
+
+        List<UrlDomain> urlDomainsList=service.findAll();
+        int size=urlDomainsList.size();
+        int sub=size/limit+1;
+
+        List<Integer> subs=new ArrayList<>();
+        for (int i = 0; i < sub; i++) {
+            subs.add(i);
+        }
+
+        model.addAttribute("subs",subs);
+        System.out.println("pageId--- "+pageId);
+
+        List<UrlDomain> urlDomains=service.getUrlsByPage(limit,offset);
+        model.addAttribute("msg",urlDomains);
+        return "viewUrl";
     }
 }

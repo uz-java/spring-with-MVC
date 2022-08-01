@@ -48,4 +48,8 @@ public class UrlService {
     public UrlDomain findByShortenedUrl(String shortenedUrl) {
         return dao.findByShortenedUrl(shortenedUrl);
     }
+
+    public List<UrlDomain> getUrlsByPage(int limit, int offset) {
+        return dao.getAllUrlsByPage(limit,offset);
+    }
 }
