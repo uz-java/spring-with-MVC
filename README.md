@@ -56,7 +56,7 @@ The most up-to-date documentation for each version can be found at:
 
 ## Properties
 
-- `version`: The version to install. Default: 8.5.54
+- `version`: The version to install. Default: 8.5.81
 - `version_archive`: The filename of the versioned archive to install. Default: apache-tomcat-VERSION.tar.gz
 - `install_path`: Full path to the install directory. Default: `/opt/tomcat_INSTANCENAME_VERSION`
 - `tarball_base_uri`: The base uri to the apache mirror containing the tarballs.
