@@ -1,6 +1,6 @@
 
 <h1 align="center">
-	<img src="https://readme-typing-svg.demolab.com/?lines=Spring+MVC+application">
+	<img src="https://readme-typing-svg.demolab.com/?lines=Spring+MVC+application!">
 </h1>
 
 ## What Is It?
@@ -80,3 +80,25 @@ The most up-to-date documentation for each version can be found at:
 - `service_template_cookbook`: Cookbook from which to source the upstart/systemd service definition template. Default: `tomcat`
 - `create_symlink`: Creates symlink at SYMLINK_PATH to INSTALL_PATH. Default: `true`
 - `symlink_path`: Full path to where the symlink will be created targetting INSTALL_PATH. Default: `/opt/tomcat_INSTANCE_NAME`
+
+## Development environment
+To run this application, please follow the steps below.
+
+1. Install the following items.
+	* JDK 17
+	* IDEs such as Eclipse and IntelliJ (require Lombok and Maven plugins)
+	* PostgreSQL 8.0
+	* Tomcat 8.5.81
+
+2. Check out this source project on the IDE.
+
+3. Change the following parameters of the config file [application.properties](/src/main/resources/application.properties) as necessary.
+
+| Paramater Name      | Description                                        |
+|:--------------------|:---------------------------------------------------|
+| application.datadir | files storage location (log, temporary file, etc.) |
+| jdbc.host           | database host                                      |
+| jdbc.database       | database name                                      |
+| jdbc.username       | database user name                                 |
+| jdbc.password       | database password                                  |
+
