@@ -3,6 +3,10 @@
 	<img src="https://readme-typing-svg.demolab.com/?lines=Spring+MVC+application!">
 </h1>
 
+A Spring MVC is a Java framework which is used to build web applications. It follows the Model-View-Controller design pattern. It implements all the basic features of a core spring framework like Inversion of Control, Dependency Injection.
+
+A Spring MVC provides an elegant solution to use MVC in spring framework by the help of DispatcherServlet. Here, DispatcherServlet is a class that receives the incoming request and maps it to the right resource such as controllers, models, and views.
+
 ## What Is It?
 
 The Apache Tomcat® software is an open source implementation of the Java
