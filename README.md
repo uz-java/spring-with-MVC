@@ -1,6 +1,6 @@
 
 <h1 align="center">
-	<img src="https://readme-typing-svg.demolab.com/?lines=Spring+MVC+project">
+	<img src="https://readme-typing-svg.demolab.com/?lines=Spring+MVC+application">
 </h1>
 
 ## What Is It?
