@@ -20,7 +20,9 @@ A Spring MVC provides an elegant solution to use MVC in spring framework by the 
 - View - A view represents the provided information in a particular format. Generally, JSP+JSTL is used to create a view page. Although spring also supports other view technologies such as Apache Velocity, Thymeleaf and FreeMarker.
 - Front Controller - In Spring Web MVC, the DispatcherServlet class works as the front controller. It is responsible to manage the flow of the Spring MVC application.
 
-![request](request.png)
+<p align="center">
+  <img src="https://github.com/uz-java/Spring_mvc/blob/asliddin/request.png?raw=true" alt="image"/>
+</p>
 
 - As displayed in the figure, all the incoming request is intercepted by the DispatcherServlet that works as the front controller.
 - The DispatcherServlet gets an entry of handler mapping from the XML file and forwards the request to the controller.
