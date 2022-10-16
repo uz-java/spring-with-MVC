@@ -1,4 +1,7 @@
-### Spring mvc project
+
+<h1 align="center">
+	<img src="https://readme-typing-svg.demolab.com/?lines=Spring+MVC+project">
+</h1>
 
 ## What Is It?
 
