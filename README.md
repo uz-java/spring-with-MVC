@@ -92,7 +92,7 @@ To run this application, please follow the steps below.
 
 2. Check out this source project on the IDE.
 
-3. Change the following parameters of the config file [application.properties](/src/main/resources/application.properties) as necessary.
+3. Change the following parameters of the config file [application.properties](https://github.com/uz-java/Spring_mvc/blob/asliddin/src/main/resources/datasource.properties) as necessary.
 
 | Paramater Name      | Description                                        |
 |:--------------------|:---------------------------------------------------|
